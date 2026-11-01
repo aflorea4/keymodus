@@ -326,6 +326,8 @@ impl Engine {
                 }
             }
         };
+        // macOS: open devices shared, so the OS (and other apps) keep receiving input.
+        #[cfg(target_os = "macos")]
         api.set_open_exclusive(false);
         // Log each failing interface once, not on every 2 s rescan.
         let mut open_failures: std::collections::HashSet<String> = std::collections::HashSet::new();

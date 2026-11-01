@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Keymodus</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app" id="app">
+    <aside class="sidebar">
+      <div class="sidebar-top" data-tauri-drag-region></div>
+      <div class="brand" data-tauri-drag-region>
+        <span class="brand-name glitch" data-tauri-drag-region>Keymodus</span>
+        <span class="brand-sub" data-tauri-drag-region><span>Input control</span><span id="brand-ver"></span></span>
+      </div>
+      <nav class="nav" aria-label="Devices">
+        <p class="nav-label">Devices</p>
+        <ul class="device-list" id="device-list"></ul>
+        <p class="nav-label">Any brand</p>
+        <ul class="device-list" id="generic-list"></ul>
+        <p class="nav-label">Library</p>
+        <ul class="device-list" id="library-list"></ul>
+      </nav>
+      <div class="sidebar-foot">
+        <button class="guard-pill" id="guard-pill" type="button" aria-label="Open binding guard activity">
+          <span class="guard-dot" aria-hidden="true"></span>
+          <span id="guard-text">Guard booting</span>
+        </button>
+        <button class="icon-btn" id="settings-btn" type="button" aria-label="Settings">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 12.6a2.6 2.6 0 1 0 0-5.2 2.6 2.6 0 0 0 0 5.2Z"/><path d="M16.2 11.9l1.3 1-1.6 2.8-1.6-.6a6.4 6.4 0 0 1-1.5.9L12.6 17.6H9.4l-.2-1.6a6.4 6.4 0 0 1-1.5-.9l-1.6.6-1.6-2.8 1.3-1a6.6 6.6 0 0 1 0-1.8l-1.3-1 1.6-2.8 1.6.6a6.4 6.4 0 0 1 1.5-.9l.2-1.6h3.2l.2 1.6c.5.2 1 .5 1.5.9l1.6-.6 1.6 2.8-1.3 1a6.6 6.6 0 0 1 0 1.8Z"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main" id="main">
+      <div class="titlebar" data-tauri-drag-region></div>
+      <div class="banners" id="banners"></div>
+      <div class="view" id="view"></div>
+    </main>
+  </div>
+
+  <div class="sheet-scrim" id="scrim" hidden></div>
+  <aside class="sheet" id="sheet" aria-modal="true" role="dialog" hidden></aside>
+  <div class="toaster" id="toaster" aria-live="polite"></div>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>

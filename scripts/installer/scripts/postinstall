@@ -1,0 +1,11 @@
+#!/bin/sh
+# Open Keymodus for the person at the console, so the first-run steps
+# (Accessibility, pausing Options+) appear straight away.
+APP="$2/Keymodus.app"
+[ -d "$APP" ] || APP="/Applications/Keymodus.app"
+USER_NAME=$(stat -f %Su /dev/console)
+if [ -n "$USER_NAME" ] && [ "$USER_NAME" != "root" ] && [ "$COMMAND_LINE_INSTALL" != "1" ]; then
+  USER_ID=$(id -u "$USER_NAME")
+  launchctl asuser "$USER_ID" sudo -u "$USER_NAME" /usr/bin/open "$APP" || true
+fi
+exit 0

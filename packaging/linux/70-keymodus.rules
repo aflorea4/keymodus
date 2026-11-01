@@ -1,0 +1,17 @@
+# Keymodus udev rules: let the logged-in user talk HID++ to Logitech devices
+# and post input through /dev/uinput, without running as root.
+#
+# Install (the .deb and .rpm packages do this for you):
+#   sudo install -m 644 70-keymodus.rules /etc/udev/rules.d/
+#   sudo udevadm control --reload-rules && sudo udevadm trigger
+# Then unplug/replug or reconnect your devices (or log out and back in).
+#
+# "uaccess" grants access to the user at the active seat; the "input" group
+# with mode 0660 is a fallback for systems without logind seat ACLs.
+
+# Logitech HID++ (Bluetooth, USB, Unifying/Bolt receivers)
+KERNEL=="hidraw*", ATTRS{idVendor}=="046d", TAG+="uaccess", GROUP="input", MODE="0660"
+KERNEL=="hidraw*", KERNELS=="0005:046D:*", TAG+="uaccess", GROUP="input", MODE="0660"
+
+# Virtual keyboard/mouse used to perform shortcuts, media keys and clicks
+KERNEL=="uinput", SUBSYSTEM=="misc", TAG+="uaccess", GROUP="input", MODE="0660", OPTIONS+="static_node=uinput"

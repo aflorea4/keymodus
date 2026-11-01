@@ -1,0 +1,83 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Keymodus",
+  "version": "0.2.0",
+  "identifier": "dev.keymodus.app",
+  "build": {
+    "frontendDist": "../ui"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "label": "main",
+        "title": "Keymodus",
+        "width": 1180,
+        "height": 780,
+        "minWidth": 980,
+        "minHeight": 660,
+        "titleBarStyle": "Overlay",
+        "hiddenTitle": true,
+        "backgroundColor": "#1b1a18"
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self' ipc: http://ipc.localhost; img-src 'self' devart: http://devart.localhost data:; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src ipc: http://ipc.localhost"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "category": "Utility",
+    "shortDescription": "Mouse and keyboard configuration",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "macOS": {
+      "minimumSystemVersion": "12.0",
+      "signingIdentity": "-",
+      "infoPlist": "Info.plist"
+    },
+    "createUpdaterArtifacts": true,
+    "publisher": "Keymodus contributors",
+    "copyright": "\u00a9 Keymodus contributors. MIT licensed.",
+    "homepage": "https://github.com/aflorea4/keymodus",
+    "longDescription": "Open-source configuration app for Logitech HID++ mice and keyboards: button and key remapping, per-app profiles, Smart Actions, pointer, backlight and Easy-Switch settings, with a binding guard that keeps remaps alive across sleep and reconnects.",
+    "linux": {
+      "deb": {
+        "depends": [
+          "libwebkit2gtk-4.1-0",
+          "libgtk-3-0"
+        ],
+        "files": {
+          "/usr/lib/udev/rules.d/70-keymodus.rules": "../packaging/linux/70-keymodus.rules"
+        }
+      },
+      "rpm": {
+        "files": {
+          "/usr/lib/udev/rules.d/70-keymodus.rules": "../packaging/linux/70-keymodus.rules"
+        }
+      }
+    },
+    "windows": {
+      "nsis": {
+        "installMode": "currentUser"
+      }
+    }
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDQ0MDRBOUZBMTczODY2RDcKUldUWFpqZ1grcWtFUktaU2F2NUQxejVacG5Ya21pSmdQV2RsMC9JRi9vSWdlODU2UGxMVEJodTIK",
+      "endpoints": [
+        "https://github.com/aflorea4/keymodus/releases/latest/download/latest.json"
+      ],
+      "windows": {
+        "installMode": "passive"
+      }
+    }
+  }
+}

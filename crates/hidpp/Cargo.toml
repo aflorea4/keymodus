@@ -1,0 +1,9 @@
+[package]
+name = "hidpp"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Logitech HID++ 2.0 protocol: framing, feature discovery and common features"
+
+[dependencies]
+thiserror = "2"

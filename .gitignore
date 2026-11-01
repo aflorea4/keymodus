@@ -1,0 +1,25 @@
+# Build output
+target/
+dist/
+app/gen/
+
+# OS / editor noise
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Secrets and signing material — never commit these
+*.key
+*.key.pub
+*.key.password
+*.p12
+*.pem
+*.cer
+*.mobileprovision
+.env
+.env.*
+.tauri/
+
+# Local preview helpers
+ui/art

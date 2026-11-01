@@ -1,0 +1,21 @@
+name: Device support
+description: Ask for (or help with) support for a Logitech device
+labels: [device]
+body:
+  - type: input
+    id: device
+    attributes:
+      label: Device name and product id
+      description: The Device tab shows the model id (e.g. 046D:B031).
+    validations:
+      required: true
+  - type: textarea
+    id: features
+    attributes:
+      label: HID++ features
+      description: Paste the Capabilities list from the Device tab, or the output of `cargo run -p keymodus --example probe` with serial numbers removed.
+      render: text
+  - type: textarea
+    id: wanted
+    attributes:
+      label: What should work?

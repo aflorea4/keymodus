@@ -1,0 +1,39 @@
+[package]
+name = "keymodus"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Configure Logitech (and any other) mice and keyboards, reliably"
+repository = "https://github.com/aflorea4/keymodus"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon", "image-png"] }
+tauri-plugin-updater = "2"
+tauri-plugin-process = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+hidpp = { path = "../crates/hidpp" }
+logi-core = { path = "../crates/core" }
+
+[target.'cfg(target_os = "macos")'.dependencies]
+hidapi = { version = "2.6", default-features = false, features = ["macos-shared-device"] }
+objc2 = "0.6"
+
+[target.'cfg(windows)'.dependencies]
+hidapi = { version = "2.6", default-features = false, features = ["windows-native"] }
+windows-sys = { version = "0.59", features = [
+  "Win32_Foundation",
+  "Win32_System_LibraryLoader",
+  "Win32_System_Threading",
+  "Win32_UI_Input_KeyboardAndMouse",
+  "Win32_UI_Shell",
+  "Win32_UI_WindowsAndMessaging",
+] }
+
+[target.'cfg(target_os = "linux")'.dependencies]
+hidapi = { version = "2.6", default-features = false, features = ["linux-native"] }
+evdev = "0.12"
+dirs = "6"

@@ -1,0 +1,5 @@
+#!/bin/sh
+# Quit a running copy so its files can be replaced. Bindings resume on relaunch.
+pkill -x keymodus 2>/dev/null || true
+pkill -x logidriver 2>/dev/null || true  # previous name
+exit 0

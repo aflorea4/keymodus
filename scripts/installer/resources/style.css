@@ -1,0 +1,12 @@
+:root { color-scheme: light dark; --ink: #1a1b16; --muted: #55564d; --signal: #5b6610; --rule: #1a1b16; --soft: rgba(26,27,22,.16); --volt: #ddf020; }
+@media (prefers-color-scheme: dark) { :root { --ink: #efefe6; --muted: #a6a79b; --signal: #ddf020; --rule: #77786c; --soft: rgba(239,239,230,.16); } }
+body { font: 13px/1.55 -apple-system, BlinkMacSystemFont, sans-serif; color: var(--ink); margin: 0; padding: 2px 8px 0 4px; }
+.kicker { font: 500 10px/1 ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--signal); margin: 0 0 8px; }
+h1 { font: 900 26px/1 -apple-system, BlinkMacSystemFont, sans-serif; font-stretch: 125%; text-transform: uppercase; letter-spacing: -.01em; margin: 0 0 14px; padding-bottom: 12px; border-bottom: 1.5px solid var(--rule); }
+p { margin: 0 0 10px; max-width: 60ch; }
+.lede { color: var(--muted); }
+ol { list-style: none; margin: 4px 0 14px; padding: 0; border-top: 1px solid var(--soft); counter-reset: step; }
+li { counter-increment: step; display: grid; grid-template-columns: 34px 1fr; padding: 9px 0; border-bottom: 1px solid var(--soft); }
+li::before { content: counter(step, decimal-leading-zero); font: 600 11px/1.9 ui-monospace, "SF Mono", Menlo, monospace; color: var(--signal); }
+b { font-weight: 700; }
+.note { color: var(--muted); font-size: 12px; }

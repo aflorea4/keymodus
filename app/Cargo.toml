@@ -35,5 +35,5 @@ windows-sys = { version = "0.59", features = [
 
 [target.'cfg(target_os = "linux")'.dependencies]
 hidapi = { version = "2.6", default-features = false, features = ["linux-native"] }
-evdev = "0.12"
+evdev = "0.13"
 dirs = "6"

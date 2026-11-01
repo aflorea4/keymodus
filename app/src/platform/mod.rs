@@ -32,6 +32,8 @@ pub use windows::*;
 
 /// What the generic "any brand" hook reports.
 #[derive(Debug, Clone, Copy)]
+// Linux has no any-brand hook yet, so nothing constructs these there.
+#[cfg_attr(target_os = "linux", allow(dead_code))]
 pub enum TapEvent {
     /// Buttons 2+ only (0 = left and 1 = right are never touched).
     MouseButton { button: u8, down: bool },
